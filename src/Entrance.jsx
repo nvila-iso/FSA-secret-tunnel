@@ -3,11 +3,14 @@ import { useAuth } from "./AuthContext";
 /** Users can enter their name to receive a token from the API. */
 export default function Entrance() {
   // TODO: call signup when form is submitted
-  const { setUserName } = useAuth();
+  const { userSignup, signupAPI } = useAuth();
 
   const getUserName = (FormData) => {
-    const user = FormData.get("name");
-    setUserName(user);
+    const userObj = {
+      username: FormData.get("name"),
+      password: "12345",
+    };
+    userSignup(signupAPI, userObj);
   };
 
   return (
