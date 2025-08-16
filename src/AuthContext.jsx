@@ -27,6 +27,19 @@ export function AuthProvider({ children }) {
   };
 
   // TODO: authenticate
+  const regAuth = async (url) => {
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const value = { location, signupAPI, userSignup };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
