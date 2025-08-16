@@ -21,6 +21,7 @@ export function AuthProvider({ children }) {
       });
       const tempToken = await result.json();
       setToken(tempToken);
+      setLocation("TABLET");
     } catch (error) {
       console.error(error);
     }
