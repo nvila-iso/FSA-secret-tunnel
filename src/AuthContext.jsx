@@ -22,7 +22,7 @@ export function AuthProvider({ children }) {
         body: JSON.stringify(body),
       });
       const tempToken = await result.json();
-      setToken(tempToken);
+      setToken(tempToken.token);
       setLocation("TABLET");
     } catch (error) {
       console.error(error);
@@ -35,7 +35,7 @@ export function AuthProvider({ children }) {
       const response = await fetch(authAPI, {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
+          // "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
